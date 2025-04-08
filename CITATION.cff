@@ -1,0 +1,8 @@
+cff-version: 1.0.2
+message: "If you use this software, please cite it as below."
+title: "gollum"
+authors:
+  - name: "Bojana Rankovic"
+version: 0.0.1
+doi:
+url: "https://github.com/schwallergroup/gollum"
