@@ -1,0 +1,29 @@
+name: gollum
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - scikit-learn
+  - scikit-learn-extra
+  - pandas
+  - pytorch-lightning
+  - tqdm
+  - pip
+  - pip:
+      - torch
+      - gpytorch
+      - botorch
+      - transformers
+      - sentence-transformers
+      - InstructorEmbedding
+      - wandb
+      - rdkit
+      - openai
+      - peft
+      - drfp
+      - rxnfp
+      - matplotlib
+      - jsonargparse

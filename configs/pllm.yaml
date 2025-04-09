@@ -1,0 +1,79 @@
+data:
+  class_path: gollum.data.module.BaseDataModule
+  init_args:
+    data_path: data/reactions/buchwald-hartwig/bh_reaction_1_procedure_template_basic.csv
+    input_column: procedure
+    target_column: objective
+    maximize: true
+    exclude_top: true
+    normalize_input: original
+    featurizer:
+      class_path: gollum.data.module.Featurizer
+      init_args:
+        representation: get_huggingface_embeddings
+        model_name: t5-base
+        pooling_method: average
+        normalize_embeddings: false
+    initializer:
+      class_path: gollum.initialization.initializers.BOInitializer
+      init_args:
+        method: true_random
+        n_clusters: 10
+bo:
+  class_path: gollum.bo.optimizer.BotorchOptimizer
+  init_args:
+    batch_strategy: "kriging"
+    batch_size: 1
+acquisition:
+  class_path: botorch.acquisition.analytic.ExpectedImprovement
+  init_args:
+    maximize: True
+surrogate_model:
+  class_path: gollum.surrogate_models.gp.DeepGP
+  init_args:
+    likelihood:
+      class_path: gpytorch.likelihoods.GaussianLikelihood
+      init_args:
+        noise_prior: null
+        noise_constraint: null
+        batch_shape:
+          class_path: torch.Size
+    covar_module:
+      class_path: gpytorch.kernels.ScaleKernel
+      init_args:
+        base_kernel:
+          class_path: gpytorch.kernels.MaternKernel
+          init_args:
+            nu: 2.5
+            ard_num_dims: null
+            batch_shape: null
+            active_dims: null
+            lengthscale_prior: null
+            lengthscale_constraint: null
+            eps: 1.0e-06
+        outputscale_prior: null
+        outputscale_constraint: null
+        ard_num_dims: null
+        batch_shape: null
+        active_dims: null
+        lengthscale_prior: null
+        lengthscale_constraint: null
+        eps: 1.0e-06
+    mean_module:
+      class_path: gpytorch.means.ConstantMean
+    standardize: true
+    normalize: false
+    initial_noise_val: 1.0
+    noise_constraint: 1.0e-04
+    initial_outputscale_val: 1.0
+    initial_lengthscale_val: 1.0
+    gp_lr: 0.2
+    ft_lr: 0.002
+    scale_embeddings: true
+    train_mll_additionally: false
+    finetuning_model:
+      class_path: gollum.featurization.deep.ProjectionLayer 
+      init_args:
+        projection_dim: 64
+n_iters: 50
+seed: 1
