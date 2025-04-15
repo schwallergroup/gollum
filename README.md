@@ -75,14 +75,13 @@ Replace `pllm_phi.yaml` with other config files for variants such as `llm_phi.ya
 ## 📚 Citation
 
 ```bibtex
-@misc{ranković2025gollumgaussianprocessoptimized,
-      title={GOLLuM: Gaussian Process Optimized LLMs -- Reframing LLM Finetuning through Bayesian Optimization}, 
-      author={Bojana Ranković and Philippe Schwaller},
-      year={2025},
-      eprint={2504.06265},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2504.06265}, 
+@inproceedings{
+rankovic2025gollum,
+title={{GOLL}uM: Gaussian Process Optimized {LLM}s {\textemdash} Reframing {LLM} Finetuning through Bayesian Optimization},
+author={Bojana Rankovi{\'c} and Philippe Schwaller},
+booktitle={ICLR 2025 Workshop on World Models: Understanding, Modelling and Scaling},
+year={2025},
+url={https://openreview.net/forum?id=2ORViHAUbf}
 }
 ```
 
