@@ -245,8 +245,7 @@ class DeepGP(SurrogateModel, SingleTaskGP):
             self.optimizer.zero_grad()
             output = self(self.train_x)
             mll_loss = -mll(output, self.train_targets.squeeze())
-            loss = mll_loss  
-            loss.backward()
+            mll_loss.backward()
             grads = [p.grad for p in self.parameters() if p.requires_grad]
             return mll_loss, grads
 

@@ -213,7 +213,7 @@ def train(config):
     wandb_config = flatten(config)
     
     with wandb.init(
-        project="bochemian_paper", config=wandb_config, group=config["group"]
+        project="gollum", config=wandb_config, group=config["group"]
     ) as run:
 
         dm = setup_data(config)
