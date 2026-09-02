@@ -3,7 +3,7 @@
 **GOLLuM – Gaussian Process Optimized LLMs are here!**  
 *One representation to rule them all!*
 
-> 📄 Paper: [![arXiv](https://img.shields.io/badge/arXiv-2504.06265-b31b1b.svg)](https://arxiv.org/abs/2504.06265)
+> 📄 Nature Machine Intelligence publication: [Large language models as uncertainty-calibrated optimizers for experimental discovery](https://www.nature.com/articles/s42256-026-01283-z)
 
 ---
 
